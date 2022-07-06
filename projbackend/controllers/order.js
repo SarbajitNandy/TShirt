@@ -20,6 +20,7 @@ exports.getOrderById = (request, response, next, id) => {
 };
 
 exports.createOrder = ( request, response) => {
+    // console.log("order came")
     request.body.order.user = request.profile;
     let order = new Order(request.body.order)
     order.save( (err, order) => {
@@ -28,6 +29,7 @@ exports.createOrder = ( request, response) => {
                 error: "Failed to store order"
             })
         }
+    console.log("order created")
 
         response.json(order)
     })
